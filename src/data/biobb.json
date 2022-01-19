@@ -1,0 +1,14 @@
+[
+    {
+      "id": "CWFR-canonical-workflow-building-blocks-R2",
+      "name": "Making Canonical Workflow Building Blocks interoperable across workflow languages",
+      "abstract": "We introduce the concept of Canonical Workflow Building Blocks (CWBB), a methodology of describing and wrapping computational tools, in order for them to be utilized in a reproducible manner from multiple workflow languages and execution platforms. The concept is implemented and demonstrated with the BioExcel Building Blocks library (BioBB), a collection of tool wrappers in the field of computational biomolecular simulation. Interoperability across different workflow languages is showcased through a protein Molecular Dynamics setup transversal workflow, built using this library and run with 5 different Workflow Manager Systems (WfMS). We argue such practice is a necessary requirement for FAIR Computational Workflows and an element of Canonical Workflow Frameworks for Research (CWFR) in order to improve widespread adoption and reuse of computational methods across workflow language barriers.",
+      "path": "biobb/CWFR-canonical-workflow-building-blocks-R2.pdf"
+    },
+    {
+      "id": "BioBB_Nature_SD_2019",
+      "name": "BioExcel Building Blocks, a software library for interoperable biomolecular simulation workfows",
+      "abstract": "In the recent years, the improvement of software and hardware performance has made biomolecular simulations a mature tool for the study of biological processes. Simulation length and the size and complexity of the analyzed systems make simulations both complementary and compatible with other bioinformatics disciplines. However, the characteristics of the software packages used for simulation have prevented the adoption of the technologies accepted in other bioinformatics felds like automated deployment systems, workfow orchestration, or the use of software containers. We present here a comprehensive exercise to bring biomolecular simulations to the “bioinformatics way of working”. The exercise has led to the development of the BioExcel Building Blocks (BioBB) library. BioBB’s are built as Python wrappers to provide an interoperable architecture. BioBB’s have been integrated in a chain of usual software management tools to generate data ontologies, documentation, installation packages, software containers and ways of integration with workfow managers, that make them usable in most computational environments.",
+      "path": "biobb/BioBB_Nature_SD_2019.pdf"
+    }
+  ]

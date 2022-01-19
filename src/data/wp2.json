@@ -1,0 +1,38 @@
+[
+    {
+      "id": "D2.1",
+      "name": "D2.1 – State of the Art and Initial Roadmap",
+      "abstract": "This deliverable is presented as a follow-up to the BioExcel-1 D2.1 deliverable, describing the new state of the art of technologies, methods and tools applicable to the computational biomolecular field, and presenting a roadmap for WP2 in the first period (18 months) of the BioExcel-2 project.  A current situation section briefly summarizes the work done in BioExcel- 1 on the development of the BioExcel building blocks (biobb) library following a  collection of software development best practices, success stories reached for a set of workflows built using this library, and finding and using BioExcel workflows through the BioExcel Cloud Portal.",
+      "path": "wp2/D2.1.pdf"
+    },
+    {
+      "id": "D2.2",
+      "name": "D2.2 – First release of workflow-ready building blocks library",
+      "abstract": "This deliverable presents the first release of the workflow-ready BioExcel building blocks library for the BioExcel-2 period. The initial roadmap of the novel identified building blocks presented in D2.1 is revised, and a new, updated roadmap for the rest of the project is presented. The current situation section contains a description of the new release of the BioExcel building blocks library, including the content of the release, the new library modules recently developed, updates on the already existing modules, new functionalities and bug fixes, and work done into increasing its visibility and outreach. The initial and updated roadmap section contains a revision of the initial roadmap presented in the D2.1 document in PM6, highlighting the milestones reached and issues found. From that, an updated roadmap for the development of the software library during the next 2 years is proposed, including a large set of new building blocks.",
+      "path": "wp2/D2.2.pdf"
+    },
+    {
+      "id": "D2.3",
+      "name": "D2.3 – First release of demonstration workflows",
+      "abstract": "This deliverable presents the first release of demonstration workflows for the BioExcel-2 period. The initial roadmap for the WP2 presented in D2.1 is revised, and a new, updated roadmap for the rest of the project is presented. The demonstration workflows designed and implemented in the first BioExcel-2 period are presented in the first section. The section is divided in three subsections, according to different workflow categories: Jupyter Notebook tutorials, library versatility tutorials, and pre-exascale demonstration workflows. The Jupyter Notebook tutorials illustrate the power of the BioExcel Building Blocks software library through biomolecular simulation tools interoperability, with examples on how to parameterize a small molecule, setup and run MD simulations, and prepare and run alchemical free energy calculations. The library versatility tutorials present how these workflows can be described and launched using different workflow managers and technologies, such as Common Workflow Language (CWL). Finally, the pre-exascale demonstration workflows are proving the power of the library to build efficient and scalable HPC-focused biomolecular workflows tackling real scientific problems, with examples presented analysing the effect of mutations on the binding affinity of protein-ligand (EGFR) or protein-protein (COVID-19 spike protein) molecules.",
+      "path": "wp2/D2.3.pdf"
+    },
+    {
+      "id": "D2.4",
+      "name": "D2.4 – Development of a framework for the combination of HPC and HPDA operations",
+      "abstract": "This deliverable presents the different approaches of the BioExcel CoE regarding the design and development of a framework for the combination of High Performance Computing (HPC) and High Performance Data Analytics (HPDA) operations, and the initial workflows that will benefit from such a framework. The BioExcel HPC-HPDA framework combines two state-of-the-art techniques: Machine Learning (ML) algorithms to automatically learn from generated data, and Big Data approaches to store, combine, analyse, and retrieve large amounts of information.",
+      "path": "wp2/D2.4.pdf"
+    },
+    {
+      "id": "D2.5",
+      "name": "D2.5 - Provision of a Workflow Environment at BioExcel portal",
+      "abstract": "This deliverable concentrates on execution environments for workflows and as such, does not describe the workflows themselves. All demonstration workflows added to the Portal during BioExcel 2 have been previously and extensively described in Deliverable 2.3.",
+      "path": "wp2/D2.5.pdf"
+    },
+    {
+      "id": "D2.6",
+      "name": "D2.6 – Integration of BioExcel software framework with standards and international initiatives",
+      "abstract": "This deliverable details the integration of the BioExcel computational framework with external initiatives and standards for the purpose of interoperability and portability, as well as wider FAIR aspects on discoverability and metadata. An ongoing challenge for users to take advantage of BioExcel tools in workflow management systems and across multiple compute infrastructures is to get the software installed and integrated into their system, without losing the significant optimization performance gains developed by BioExcel. Our work on forming the BioExcel Building Blocks (BioBB) have helped unify programmatic invocation of biomolecular simulation and modelling tools, making it easier to include them in major workflow systems in life sciences. Technically the building block functionality has been made possibly by building on multiple standards, technologies and initiatives for interoperability, as detailed in this deliverable.",
+      "path": "wp2/D2.6.pdf"
+    }
+  ]
