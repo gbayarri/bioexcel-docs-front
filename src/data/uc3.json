@@ -19,8 +19,8 @@
   },
   {
     "id": "BioExcel2_CV19_Review",
-    "name": "HPC- approaches for Molecular Dynamics. Covid-19 research: a use case",
-    "abstract": "Biomolecular simulations have linked to computer power since their origin in the sixties. Thus, access to Golem computer explained (in part) the leadership of Weizmann’s institute in the development of the first force-field based methods oriented towards the study of biomacromolecules [1], [2]  , and a large computer placed at CECAM headquarters allowed the first molecular dynamics (MD) simulation of a protein by McCammon, Gellin and Karplus [3] . Since the seventies continuum improvements in computers have allowed molecular simulations, and in particular MD to be established in the structural biology and biophysics worlds.",
+    "name": "Pre-Exascale HPC- approaches for Molecular Dynamics simulations. Covid-19 research: a use case",
+    "abstract": "Exascale computing has been a dream for ages and is close to become a reality that will impact the way in which molecular simulations are being performed and the quantity and quality of the information derived for them. We review how the biomolecular simulations field is anticipating these new architectures, making emphasis in recent work from groups in the BioExcel Center of Excellence for High Performance Computing. We exemplified the power of these simulation strategies with the work done by the HPC simulation community to fight Covid-19 pandemics.",
     "path": "uc3/BioExcel2_CV19_Review.pdf"
   },
   {
