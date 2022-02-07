@@ -17,6 +17,7 @@
 </template>
 
 <script>
+import globals from "@/globals";
 import { computed } from "vue";
 import useFlags from "@/modules/common/useFlags";
 export default {
@@ -25,12 +26,7 @@ export default {
 
     const menuEnabled = computed(() => flags.menuEnabled);
 
-    const items = [
-      { label: "About", icon: "pi pi-fw pi-info-circle", to: "/" },
-      { label: "Use Case 3", icon: "fas fa-project-diagram", to: "/docs/uc3" },
-      { label: "Work Package 2", icon: "fas fa-box-open", to: "/docs/wp2" },
-      { label: "BioBB", icon: "fas fa-cubes", to: "/docs/biobb" },
-    ];
+    const items = globals.menu
     return { menuEnabled, items };
   },
 };

@@ -23,11 +23,13 @@
 
 <script>
 import globals from "@/globals";
-import { ref, computed, onUpdated } from 'vue'
+import { inject, ref, computed, watch } from 'vue'
 import useAPI from '@/modules/api/useAPI'
 export default {
     props: ['id'],
     setup(props) {
+
+        const $router = inject('$router')
 
         const { apiData, respStatus, fetchCategoryDocuments, fetchDocumentImage, fetchDocumentPDF } = useAPI()
 
@@ -48,11 +50,12 @@ export default {
         let header = ref('LOADING...')
         let images = ref({})
 
-        fetchCategoryDocuments(doc_id.value)
+        const loadDocsList = (id) => {
+            fetchCategoryDocuments(id)
                 .then(() => {
                     if(respStatus.value === 200) {
                         docsList.value = apiData.value
-                        header.value = globals.categories[doc_id.value]
+                        header.value = globals.menu.filter(item => item.category === id)[0].desc
 
                         // create images URLs
                         docsList.value.forEach(item => {
@@ -65,36 +68,27 @@ export default {
                                 }) 
                         })
 
-                    }else if(respStatus.value === 404) {
+                        // once page is loaded, check if anchor in URL and go to it
+                        setTimeout(() => {
+                            if(window.location.hash) {
+                                var top = document.querySelector(window.location.hash).offsetTop
+                                document.body.scrollTop = top
+                            }
+                        }, 1000)
+
+                    } else if(respStatus.value === 404) {
                         console.error('Category not found')
                         header.value = 'CATEGORY NOT FOUND'
                     }
                 })
+        }
 
-        onUpdated(() => {
-            fetchCategoryDocuments(doc_id.value)
-                .then(() => {
-                    if(respStatus.value === 200) {
-                        docsList.value = apiData.value
-                        header.value = globals.categories[doc_id.value]
+        loadDocsList(doc_id.value)
 
-                        // create images URLs
-                        docsList.value.forEach(item => {
-                            fetchDocumentImage(item.id)
-                                .then(response => response.blob())
-                                .then(blob => {
-                                    const file = new Blob([blob], {type: 'image/png'});
-                                    const fileURL = URL.createObjectURL(file);
-                                    images.value[item.id] = fileURL
-                                }) 
-                        })
-
-                    }else if(respStatus.value === 404) {
-                        console.error('Category not found')
-                        header.value = 'CATEGORY NOT FOUND'
-                    }
-                })
-            
+        watch(doc_id, (id, prevID) => {
+            if(id !== prevID) {
+                loadDocsList(id)
+            }
         })
 
         return { header, doc_id, docsList, images, openExternal }
