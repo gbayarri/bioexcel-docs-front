@@ -14,11 +14,6 @@ const routes = [
     name: 'Documents',
     component: Documents,
     props: true
-    /*props(route) { 
-      return {
-        id: route.params.id
-      }
-    }*/
   },
   {
     path: '/:catchAll(.*)',

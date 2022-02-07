@@ -7,14 +7,14 @@
             </template>
             <template #content>
                 <div class="grid">
-                    <div class="lg:col-3 md:col-4 sm:col-12">
-                        <img :src="require(`@/assets/img/thumbnails/${doc_id}/${doc.id}.png`)" class="thumbnail" >
+                    <div class="lg:col-3 md:col-4 sm:col-12 col-thumbnail">
+                        <img :src="images[doc.id]" class="thumbnail" >
                     </div>
                     <div class="lg:col-9 md:col-8 sm:col-12">
                         <p v-html="doc.abstract"></p>
                     </div>
                 </div>
-                <Button icon="fas fa-file-pdf" class="p-button-sm" label="Open in PDF format" @click="openExternal(doc.path)" />
+                <Button icon="fas fa-file-pdf" class="p-button-sm" label="Open in PDF format" @click="openExternal(doc.id)" />
             </template>
         </Card>
         <ScrollTop :threshold="200" />
@@ -22,41 +22,92 @@
 </template>
 
 <script>
-import { computed } from 'vue'
-import docsUC3 from "@/data/uc3.json";
-import docsWP2 from "@/data/wp2.json";
-import docsBioBB from "@/data/biobb.json";
+import globals from "@/globals";
+import { ref, computed, onUpdated } from 'vue'
+import useAPI from '@/modules/api/useAPI'
 export default {
     props: ['id'],
     setup(props) {
 
-        let doc_id = computed(() => props.id)
+        const { apiData, respStatus, fetchCategoryDocuments, fetchDocumentImage, fetchDocumentPDF } = useAPI()
 
-        const documentation = {
-            uc3: docsUC3,
-            wp2: docsWP2,
-            biobb: docsBioBB
+        const doc_id = computed(() => props.id)
+
+        const openExternal = (id) => {
+            fetchDocumentPDF(id)
+                .then(response => response.blob())
+                .then(blob => {
+                    const file = new Blob([blob], {type: 'application/pdf'});
+                    const fileURL = URL.createObjectURL(file);
+                    window.open(fileURL, '_blank');
+                })
+
         }
 
-        const headers = {
-            uc3: 'Use Case 3 preprints',
-            wp2: 'Work Package 2 deliverables',
-            biobb: 'BioBB related papers'
-        }
+        let docsList = ref([])
+        let header = ref('LOADING...')
+        let images = ref({})
 
-        const docsList = computed(() => documentation[doc_id.value])
-        const header = computed(() => headers[doc_id.value])
+        fetchCategoryDocuments(doc_id.value)
+                .then(() => {
+                    if(respStatus.value === 200) {
+                        docsList.value = apiData.value
+                        header.value = globals.categories[doc_id.value]
 
-        const openExternal = (path) => {
-            window.open(process.env.VUE_APP_DATA_URL + path, '_blank')
-        }
+                        // create images URLs
+                        docsList.value.forEach(item => {
+                            fetchDocumentImage(item.id)
+                                .then(response => response.blob())
+                                .then(blob => {
+                                    const file = new Blob([blob], {type: 'image/png'});
+                                    const fileURL = URL.createObjectURL(file);
+                                    images.value[item.id] = fileURL
+                                }) 
+                        })
 
-        return { header, doc_id, docsList, openExternal }
+                    }else if(respStatus.value === 404) {
+                        console.error('Category not found')
+                        header.value = 'CATEGORY NOT FOUND'
+                    }
+                })
+
+        onUpdated(() => {
+            fetchCategoryDocuments(doc_id.value)
+                .then(() => {
+                    if(respStatus.value === 200) {
+                        docsList.value = apiData.value
+                        header.value = globals.categories[doc_id.value]
+
+                        // create images URLs
+                        docsList.value.forEach(item => {
+                            fetchDocumentImage(item.id)
+                                .then(response => response.blob())
+                                .then(blob => {
+                                    const file = new Blob([blob], {type: 'image/png'});
+                                    const fileURL = URL.createObjectURL(file);
+                                    images.value[item.id] = fileURL
+                                }) 
+                        })
+
+                    }else if(respStatus.value === 404) {
+                        console.error('Category not found')
+                        header.value = 'CATEGORY NOT FOUND'
+                    }
+                })
+            
+        })
+
+        return { header, doc_id, docsList, images, openExternal }
 
     }
 }
 </script>
 
 <style>
-    .thumbnail { width:100%; }
+    .thumbnail {  width:100%; }
+    .col-thumbnail {
+        background-image: url("~@/assets/loader.svg"); 
+        background-repeat: no-repeat; 
+        background-position: center;
+    }
 </style>
