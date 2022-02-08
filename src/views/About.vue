@@ -10,9 +10,9 @@
         <div class="lg-10 md-8 sm-12">
           <div v-html="welcomePanel.description"></div>
           <ul>
-            <li><router-link to="/docs/uc3">UC3 documents</router-link></li>
-            <li><router-link to="/docs/wp2">WP2 Deliverables</router-link></li>
-            <li><router-link to="/docs/biobb">BioBB documents</router-link></li>
+            <li v-for="item in menu" :key="item.id">
+              <router-link :to="item.to">{{ item.label }}</router-link>
+            </li>
           </ul>
         </div>
       </div>
@@ -116,13 +116,10 @@
 </template>
 
 <script>
-//import { ref, onMounted } from 'vue'
 import globals from "@/globals";
-import { inject } from "vue";
 export default {
   components: {},
   setup() {
-    const $router = inject("$router");
 
     const header = globals.longName;
 
@@ -138,10 +135,6 @@ export default {
       `,
     };
 
-    const openLink = (id) => {
-      $router.push({ name: id });
-    };
-
     const aboutPanel = {
       header: " About us",
       description: `<p><strong>BioExcel2 WP2 team</strong> is led by <a href="https://www.irbbarcelona.org/en" target="_blank">IRB Barcelona</a> and helped by 
@@ -149,7 +142,9 @@ export default {
       <a href="https://www.ebi.ac.uk/" target="_blank">EMBL-EBI</a>, <a href="https://www.uu.nl/en" target="_blank">UU</a> and <a href="https://www.kth.se/en" target="_blank">KTH</a>.</p>`,
     };
 
-    return { header, welcomePanel, openLink, aboutPanel };
+    const menu = globals.menu.filter(item => item.category !== 'about')
+
+    return { header, welcomePanel, aboutPanel, menu };
   },
 };
 </script>

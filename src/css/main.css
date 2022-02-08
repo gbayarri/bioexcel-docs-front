@@ -12,6 +12,7 @@ hr.subsection { border-top: dashed 1px rgba(255,255,255,0.5); height: 0!importan
 h1 { color: #ffab39; font-size: 30px; font-weight: 400; }
 h2 { color: #ffab39; font-size: 25px; font-weight: 400; }
 .bold { font-weight: 900;}
+embed#file-container { width:100%; height: 100vh; }
 
 #app {
     -webkit-font-smoothing: antialiased;
@@ -112,6 +113,16 @@ body, html { scrollbar-color: #858f98 #f1f1f1; scrollbar-width: thin; }
 .p-panel .p-panel-content { border:none;}
 .p-panel .p-panel-header .p-panel-header-icon:enabled:hover { background: transparent;}
 .p-panel .p-panel-header .p-panel-header-icon:focus { box-shadow: none;}
+
+/* dialogs */
+.p-dialog .p-dialog-header { justify-content: unset; color: #6c757d!important; padding: 0.5rem 1.5rem; }
+.p-dialog .p-dialog-header h3 { margin-left: 0.5rem; font-weight: 600;  }
+.p-dialog .p-dialog-header .p-dialog-header-icon { position: absolute; right: 20px; }
+.p-dialog .p-dialog-header .p-dialog-header-icon:focus { box-shadow: none; }
+
+/*input text */
+.p-inputtext:enabled:hover { border-color: #5e738b; }
+.p-inputtext:enabled:focus { border-color: #5e738b; box-shadow: none; }
 
 /* cards */
 .p-card .p-card-title { color: #6c757d; }

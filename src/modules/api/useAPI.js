@@ -14,18 +14,12 @@ export default function useAPI() {
 
     }
 
-    // fetch Document image
-    const fetchDocumentImage = async (id) => {
+    // fetch Document file
+    const fetchFile = async (id, type) => {
 
-        const response = await fetch(`${process.env.VUE_APP_API_FILES}${id}/png`)
-        return response
+        const url = type === 'png' ? `${process.env.VUE_APP_API_FILES}${id}/png` : `${process.env.VUE_APP_API_FILES}${id}/pdf`
 
-    }
-
-    // fetch Document pdf
-    const fetchDocumentPDF = async (id) => {
-
-        const response = await fetch(`${process.env.VUE_APP_API_FILES}${id}/pdf`)
+        const response = await fetch(url)
         return response
 
     }
@@ -33,8 +27,7 @@ export default function useAPI() {
     return {
         apiData, respStatus,
         fetchCategoryDocuments,
-        fetchDocumentImage,
-        fetchDocumentPDF
+        fetchFile
     }
 
 }

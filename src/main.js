@@ -6,6 +6,8 @@ import TabMenu from 'primevue/tabmenu'
 import Panel from 'primevue/panel'
 import Card from 'primevue/card'
 import Button from 'primevue/button'
+import Dialog from 'primevue/dialog'
+import Textarea from 'primevue/textarea'
 
 // custom components
 import ScrollTop from '@/components/custom/ScrollTop'
@@ -39,6 +41,8 @@ app.component('Footer', Footer)
 app.component('Panel', Panel)
 app.component('Card', Card)
 app.component('Button', Button)
+app.component('Dialog', Dialog)
+app.component('Textarea', Textarea)
 app.component('ScrollTop', ScrollTop)
 
 //mount app

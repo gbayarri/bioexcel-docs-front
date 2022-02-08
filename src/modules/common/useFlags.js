@@ -1,7 +1,8 @@
 import { reactive } from 'vue'
 
 const flags = reactive({
-    menuEnabled: true
+    menuEnabled: true,
+    footerEnabled: true
 })
 
 export default function useFlags() {

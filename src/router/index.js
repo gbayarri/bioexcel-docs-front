@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import About from '@/views/About.vue'
 import Documents from '@/views/Documents.vue'
+import Files from '@/components/assets/Files.vue'
 import NotFound from '@/views/NotFound.vue'
 
 const routes = [
@@ -13,6 +14,11 @@ const routes = [
     path: '/docs/:id',
     name: 'Documents',
     component: Documents,
+    props: true
+  },{
+    path: '/data/:id/:type',
+    name: 'Files',
+    component: Files,
     props: true
   },
   {
