@@ -40,5 +40,9 @@ export default {
 </script>
 
 <style>
-    
+    #file-container {
+        background-image: url("~@/assets/loader.svg"); 
+        background-repeat: no-repeat; 
+        background-position: center;
+    }
 </style>

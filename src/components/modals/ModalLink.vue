@@ -13,7 +13,7 @@
 
         <p>For sharing a direct link to this document, <strong>you just need to copy the URL below</strong>: </p>
         <div class="p-inputgroup">
-            <Textarea v-model="linkHtml" rows="1" id="linktextarea" />
+            <Textarea v-model="linkHtml" rows="2" id="linktextarea" />
             <Button icon="far fa-copy" label="Copy" @click="copyLink" />
         </div>
 
